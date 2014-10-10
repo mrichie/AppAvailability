@@ -18,6 +18,21 @@ var appAvailability = {
             "checkAvailability",
             [urlScheme]
         );
+    },
+
+    openURL: function(url, callback) {
+	var success = function() {
+	    callback();
+	};
+	var failure = function(error) {
+	    callback(error);
+	};
+	cordova.exec(success, 
+		     failure, 
+		     "AppAvailability", 
+		     'openURL', 
+		     [url]
+		    );
     }
     
 };
